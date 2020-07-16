@@ -8,7 +8,7 @@ const username = process.env.USERMONGO;
 const password = process.env.PASSWORDMONGO;
 
 const app = express();
-console.log(username);
+
 mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.royef.mongodb.net/linxpart-1?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
