@@ -1,24 +1,12 @@
 const Product = require('../models/Product');
+const ProductService = require('../services/product');
 
 module.exports = {
     async store(req, res) {
-        const { id, name } = req.body;
+        const product = req.body;
 
-        const date = new Date();
-        date.setUTCMinutes(date.getMinutes() - 10);
+        const response = await ProductService.createProductRequest(product);    
 
-        let product = await Product.findOne({ id, name }).sort("+createAt").where({ createAt: { $gte: date } });
-
-        if (!product) {
-            
-            product = await Product.create({
-                id: id,
-                name: name
-            });
-
-            return res.status(200).send('Ok');
-        }
-
-        return res.status(403).send('Forbidden');
+        return response ? res.status(200).send('Ok') : res.status(403).send('Forbidden')
     }
 }
