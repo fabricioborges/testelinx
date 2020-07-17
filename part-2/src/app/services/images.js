@@ -1,13 +1,24 @@
-const fs = require('fs');
+//const fs = require('fs');
+var tar = require('tar')    
 
 module.exports = {
-     async readFile(){
-        const content = await fs.readFileSync('src/input-dump', 'utf-8');
+   async readFile() {
 
-        const object =  content.length;
+      const data = []
 
-         const fileJSON = JSON.parse(object);
-        
-        // fs.writeFileSync('src/test', fileJSON);        
- }
+      const file = 'src/input-dump.tar.gz'
+
+      const onentry = entry => {
+         if (entry.path === 'input-dump')
+            entry.on('data', c => data.push(c))
+      }
+
+      tar.t({
+         onentry,
+         file,
+      }, er => {
+         const buf = Buffer.concat(data)
+         console.log(JSON.stringify(buf))
+      })       
+   }
 }

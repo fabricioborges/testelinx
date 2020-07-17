@@ -2,5 +2,17 @@
   "name": "part-2",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest --watchAll",
+    "dev": "nodemon src/server.js --ignore __tests__"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "tar": "^6.0.2",
+    "tar-stream": "^2.1.3"
+  }
 }
