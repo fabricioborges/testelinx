@@ -15,6 +15,10 @@
 
 *para as credenciais do mongo atlas, enviados por e-mail, e utilizado para definir a porta a qual a api vai rodar*
 
+# Run
+
+> yarn start ou node src/server.js
+
 # Run Tests
 
 > yarn jest
