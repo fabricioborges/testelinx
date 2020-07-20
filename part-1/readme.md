@@ -14,3 +14,7 @@
 # Necessário criar arquivo .env
 
 *para as credenciais do mongo atlas, enviados por e-mail, e utilizado para definir a porta a qual a api vai rodar*
+
+# Run Tests
+
+> yarn jest
